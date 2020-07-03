@@ -3,10 +3,34 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-  <package name="default" namespace="/" extends="struts-default">
-  <default-action-ref name="index"></default-action-ref>
-  	<action name="index">
-  		<result>templates/index.jsp</result>
-  	</action>
-  </package>
+	<package name="default" namespace="/" extends="struts-default">
+		<default-action-ref name="index"></default-action-ref>
+		<action name="index">
+			<result>templates/index.jsp</result>
+		</action>
+		<action name="cartescredits"
+			class="com.mrabdelaziz.web.CartesCreditAction" method="index">
+			<result name="success">templates/cartescredit/index.jsp</result>
+		</action>
+		<action name="proprietaires"
+			class="com.mrabdelaziz.web.ProprietaireAction" method="index">
+			<result name="success">templates/proprietaire/index.jsp</result>
+		</action>
+
+		<action name="save"
+			class="com.mrabdelaziz.web.ProprietaireAction" method="save">
+			<result name="success">templates/proprietaire/index.jsp</result>
+		</action>
+		
+		<action name="delete"
+			class="com.mrabdelaziz.web.ProprietaireAction" method="delete">
+			<result name="success">templates/proprietaire/index.jsp</result>
+		</action>
+		
+		<action name="edit"
+			class="com.mrabdelaziz.web.ProprietaireAction" method="edit">
+			<result name="success">templates/proprietaire/index.jsp</result>
+			<result name="error">err</result>
+		</action>
+	</package>
 </struts>

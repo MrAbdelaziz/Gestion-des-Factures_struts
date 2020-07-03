@@ -1,0 +1,18 @@
+div{
+	border:1px dotted gray;
+	padding:10px;
+	marging:10px;
+}
+
+.table1 th{
+	border :1px dotted gray;
+	padding:5px;
+	background:maroon;
+	color:white;
+}
+
+.table1 td{
+	border:1px dotted gray;
+	padding:5px;
+	background:white;
+}
