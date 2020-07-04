@@ -16,3 +16,7 @@ div{
 	padding:5px;
 	background:white;
 }
+
+.errorMessage{
+	color:red;
+}

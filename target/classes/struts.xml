@@ -8,6 +8,7 @@
 		<action name="index">
 			<result>templates/index.jsp</result>
 		</action>
+		
 		<action name="cartescredits"
 			class="com.mrabdelaziz.web.CartesCreditAction" method="index">
 			<result name="success">templates/cartescredit/index.jsp</result>
@@ -20,6 +21,8 @@
 		<action name="save"
 			class="com.mrabdelaziz.web.ProprietaireAction" method="save">
 			<result name="success">templates/proprietaire/index.jsp</result>
+			<result name="input">templates/proprietaire/index.jsp</result>
+			
 		</action>
 		
 		<action name="delete"

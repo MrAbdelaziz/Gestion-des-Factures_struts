@@ -2,10 +2,12 @@ package com.mrabdelaziz.impl;
 
 import java.util.List;
 
+
 import com.mrabdelaziz.dao.ProprietaireDAO;
 import com.mrabdelaziz.model.Proprietaire;
 import com.mrabdelaziz.service.ProprietaireService;
-
+import org.springframework.transaction.annotation.Transactional;
+@Transactional
 public class ProprietaireServiceIMPL implements ProprietaireService{
 	private ProprietaireDAO dao;
 	

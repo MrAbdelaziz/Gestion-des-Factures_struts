@@ -2,24 +2,20 @@ package com.mrabdelaziz.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-
+@Entity
 public class Cartecredit implements Serializable {
-	//private static final long serialVersionUID = 1L;
-
-	//@Id
+	@Id
 	private String numCarte;
 
 	//bi-directional many-to-one association to Proprietaire
-	//@ManyToOne
-	//@JoinColumn(name="idProprietaire")
+	@ManyToOne
+	@JoinColumn(name="idProprietaire")
 	private Proprietaire proprietaire;
-
-	public Cartecredit(String numCarte, Proprietaire proprietaire) {
-		super();
-		this.numCarte = numCarte;
-		this.proprietaire = proprietaire;
-	}
 
 	public Cartecredit() {
 	}
@@ -39,4 +35,5 @@ public class Cartecredit implements Serializable {
 	public void setProprietaire(Proprietaire proprietaire) {
 		this.proprietaire = proprietaire;
 	}
+
 }

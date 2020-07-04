@@ -40,10 +40,10 @@ public class ProprietaireIMPL implements ProprietaireDAO{
 	}
 
 	public void init() {
-		addProprietaire(new Proprietaire(1, "prop1nom", "prop1prenom"));
-		addProprietaire(new Proprietaire(2, "prop2nom", "prop2prenom"));
-		addProprietaire(new Proprietaire(3, "prop3nom", "prop3prenom"));
-		addProprietaire(new Proprietaire(4, "prop4nom", "prop4prenom"));
+		//addProprietaire(new Proprietaire(1, "prop1nom", "prop1prenom"));
+		//addProprietaire(new Proprietaire(2, "prop2nom", "prop2prenom"));
+		//addProprietaire(new Proprietaire(3, "prop3nom", "prop3prenom"));
+		//addProprietaire(new Proprietaire(4, "prop4nom", "prop4prenom"));
 		log.info("Proprietaire");
 	}
 

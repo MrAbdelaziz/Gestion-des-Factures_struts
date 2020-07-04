@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//Xwork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+ 
+<validators>
+	<field name="proprietaire.nom">
+		<field-validator type="requiredstring">
+			<message key="nom.obligatoire"></message>
+		</field-validator>
+	</field>
+	
+	
+	<field name="proprietaire.prenom">
+		<field-validator type="requiredstring">
+			<message key="prenom.obligatoire"></message>
+		</field-validator>
+	</field>
+</validators>

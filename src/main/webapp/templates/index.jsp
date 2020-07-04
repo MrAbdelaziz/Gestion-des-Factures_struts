@@ -15,5 +15,6 @@
 		
 		<s:url namespace="/" action="proprietaires" var="l2"></s:url>
 		<s:a href="%{l2}">proprietaires</s:a>
+		
 </body>
 </html>

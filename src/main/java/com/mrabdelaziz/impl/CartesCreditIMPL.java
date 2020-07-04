@@ -45,10 +45,10 @@ public class CartesCreditIMPL implements CartesCreditDAO {
 	}
 	
 	public void init() {
-				addCarteCredit(new Cartecredit("cc1", new Proprietaire(1,"elouahab","abdelaziz")));
-				addCarteCredit(new Cartecredit("cc2", new Proprietaire(2,"elouahab2","abdelaziz2")));
-				addCarteCredit(new Cartecredit("cc3", new Proprietaire(3,"elouahab3","abdelaziz3")));
-				addCarteCredit(new Cartecredit("cc4", new Proprietaire(4,"elouahab4","abdelaziz4")));
+			//	addCarteCredit(new Cartecredit("cc1", new Proprietaire(1,"elouahab","abdelaziz")));
+				//addCarteCredit(new Cartecredit("cc2", new Proprietaire(2,"elouahab2","abdelaziz2")));
+				//addCarteCredit(new Cartecredit("cc3", new Proprietaire(3,"elouahab3","abdelaziz3")));
+				//addCarteCredit(new Cartecredit("cc4", new Proprietaire(4,"elouahab4","abdelaziz4")));
 			    log.info("init de cc");
 	}
 

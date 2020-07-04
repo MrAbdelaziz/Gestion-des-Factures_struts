@@ -11,9 +11,9 @@
 <body>
 	<div>
 	<s:form action="save" method="post">
-		<s:textfield label="ID" name="prop.id"></s:textfield>
-		<s:textfield label="Nom" name="prop.nom"></s:textfield>
-		<s:textfield label="Prenom" name="prop.prenom"></s:textfield>
+		<s:textfield label="ID" name="proprietaire.id"></s:textfield>
+		<s:textfield key="nom.label" name="proprietaire.nom"></s:textfield>
+		<s:textfield key="prenom.label" name="proprietaire.prenom"></s:textfield>
 		<s:submit value="Save"></s:submit>
 	</s:form>
 	</div>
