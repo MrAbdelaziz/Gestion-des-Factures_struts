@@ -41,14 +41,14 @@
 Toutes les transactions bancaires sont cryptées et 100% sécurisées selon les derniers critères en vigueur.
 Le service du paiement en ligne n’est pas facturé par votre banque.</p>
                 <div class="container-content">
-                    <form class="margin-t">
+                    <s:form action="home_client" class="margin-t" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="NumCarte" required="">
+                            <input type="text" class="form-control" placeholder="Votre ID" name="idclient" required="">
                         </div>
                         <button type="submit" class="form-button button-l margin-b">Valider</button>
                     </form>
                     <p class="margin-t text-whitesmoke"><small> MrAbdelaziz &copy; 2020</small> </p>
-                </div>
+                </s:form>
             </div>
 	</div>
 	

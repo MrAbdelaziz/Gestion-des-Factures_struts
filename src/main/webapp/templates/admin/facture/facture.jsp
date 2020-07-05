@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
+<%@taglib uri="/struts-jquery-tags" prefix="jq" %>
 
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <title>Administration</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +18,11 @@
 	rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/css/custom.min.css"
 	rel="stylesheet" type="text/css" />
-
+<script type="text/javascript">
+$.get("getSubForm",function(data){
+	 $("#subForm").html(data);	
+	});
+	  </script>
 </head>
 <body>
 	<header>
@@ -139,10 +146,6 @@
 							<div class="card" style="width: 100%">
 								<div class="card-body">
 						
-
-
-
-
 								</div>
 								<div class="card mt-2" style="width: 100%; border: 0px">
 									<label for="inputNom" class="col-sm-2 col-form-label"
@@ -184,6 +187,15 @@ mont =Integer.parseInt(request.getParameter("mont"));
 									</div>
 									
 									<label for="inputNom" class="col-sm-2 col-form-label"
+										style="font-weight: bold">Restant :</label>
+									<div class="form-group row">
+										<div class="col-sm-10">
+										<input type="text" name="facture.restant"
+												class="form-control"
+												value="0">
+										</div>
+									</div>
+									<label for="inputNom" class="col-sm-2 col-form-label"
 										style="font-weight: bold">Date Facture :</label>
 
 									<div class="form-group row">
@@ -193,6 +205,27 @@ mont =Integer.parseInt(request.getParameter("mont"));
 												id="save_facture_facture_dateFacture">
 										</div>
 									</div>
+									
+									<label for="inputNom" class="col-sm-2 col-form-label"
+										style="font-weight: bold">Etat :</label>
+
+									<div class="form-group row">
+										<div class="col-sm-10">
+												<select name="facture.etat" class="browser-default custom-select">
+												  <option value="en attente" selected>en attente</option>
+												  <option value="paye">paye</option>
+												  <option value="en cours">en cours</option>
+												</select>
+										</div>
+									</div>
+									
+									<label for="inputNom" class="col-sm-2 col-form-label"
+										style="font-weight: bold">Proprietaire :</label>
+										
+									<div class="form-group row">
+									<div style="margin-left:15px" id="subForm"></div>
+									</div>
+									
 									
 									<button type="submit" class="btn btn-warning">Confirm</button>
 									

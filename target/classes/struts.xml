@@ -5,36 +5,39 @@
 <struts>
 	<package name="default" namespace="/" extends="struts-default">
 		<default-action-ref name="index"></default-action-ref>
-		<action name="index">
+		
+		<action name="index" class="com.mrabdelaziz.web.admin.AdminAction" method="login_view">
 			<result>templates/index.jsp</result>
 		</action>
 		
-		<action name="cartescredits"
-			class="com.mrabdelaziz.web.CartesCreditAction" method="index">
-			<result name="success">templates/cartescredit/index.jsp</result>
-		</action>
-		<action name="proprietaires"
-			class="com.mrabdelaziz.web.ProprietaireAction" method="index">
-			<result name="success">templates/proprietaire/index.jsp</result>
-		</action>
-
-		<action name="save"
-			class="com.mrabdelaziz.web.ProprietaireAction" method="save">
-			<result name="success">templates/proprietaire/index.jsp</result>
-			<result name="input">templates/proprietaire/index.jsp</result>
+				<!-- practice  section -->
+		
+					<action name="cartescredits"
+						class="com.mrabdelaziz.web.CartesCreditAction" method="index">
+						<result name="success">templates/cartescredit/index.jsp</result>
+					</action>
+					<action name="proprietaires"
+						class="com.mrabdelaziz.web.ProprietaireAction" method="index">
+						<result name="success">templates/proprietaire/index.jsp</result>
+					</action>
 			
-		</action>
-		
-		<action name="delete"
-			class="com.mrabdelaziz.web.ProprietaireAction" method="delete">
-			<result name="success">templates/proprietaire/index.jsp</result>
-		</action>
-		
-		<action name="edit"
-			class="com.mrabdelaziz.web.ProprietaireAction" method="edit">
-			<result name="success">templates/proprietaire/index.jsp</result>
-			<result name="error">err</result>
-		</action>
+					<action name="save"
+						class="com.mrabdelaziz.web.ProprietaireAction" method="save">
+						<result name="success">templates/proprietaire/index.jsp</result>
+						<result name="input">templates/proprietaire/index.jsp</result>
+						
+					</action>
+					
+					<action name="delete"
+						class="com.mrabdelaziz.web.ProprietaireAction" method="delete">
+						<result name="success">templates/proprietaire/index.jsp</result>
+					</action>
+					
+					<action name="edit"
+						class="com.mrabdelaziz.web.ProprietaireAction" method="edit">
+						<result name="success">templates/proprietaire/index.jsp</result>
+						<result name="error">err</result>
+					</action>
 		
 		<!-- admin -->
 		
@@ -131,6 +134,30 @@
 				class="com.mrabdelaziz.web.admin.AdminAction" method="delete_facture">
 				<result name="success">templates/admin/facture/facturelist.jsp</result>
 			</action>
-		
+			
+	      <action name="getSubForm" class="com.mrabdelaziz.web.admin.AdminAction" method="getSubForm">
+               <result name="success">templates/admin/facture/SubForm.jsp</result>
+        </action>
+			<!-- Transaction / Factures -->
+			<action name="home_client"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="login_client">
+				<result name="success">templates/client/facturelist.jsp</result>
+			</action>
+			
+			
+			<action name="paye_facture"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="paye_facture_step1">
+				<result name="success">templates/client/paye.jsp</result>
+			</action>
+			
+	<action name="getSubForm2" class="com.mrabdelaziz.web.admin.AdminAction" method="getSubForm2">
+               <result name="success">templates/client/ccsub.jsp</result>
+        </action>
+        
+        <action name="paye_avec_sucess"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="paye_facture_step2">
+				<result name="success">templates/client/facturelist.jsp</result>
+			</action>
+
 	</package>
 </struts>

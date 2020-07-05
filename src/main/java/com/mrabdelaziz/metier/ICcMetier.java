@@ -10,4 +10,5 @@ public interface ICcMetier {
 	public Cartecredit getCc(String id);
 	public void deleteCc(String id);
 	public void updateCc(Cartecredit cartecredit);
+	public List<Cartecredit> listCcbyProprietaire(int id);
 }

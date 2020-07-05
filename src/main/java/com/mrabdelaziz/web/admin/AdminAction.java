@@ -9,23 +9,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mrabdelaziz.metier.ICcMetier;
 import com.mrabdelaziz.metier.IFactureMetier;
 import com.mrabdelaziz.metier.IProprietaireMetier;
+import com.mrabdelaziz.metier.ITransactionMetier;
 import com.mrabdelaziz.model.Cartecredit;
 import com.mrabdelaziz.model.Facture;
 import com.mrabdelaziz.model.Proprietaire;
+import com.mrabdelaziz.model.Transaction;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AdminAction extends ActionSupport{
 	public Cartecredit cartecredit = new Cartecredit();
 	public Proprietaire proprietaire = new Proprietaire();
 	public Facture facture = new Facture();
+	public Transaction transaction = new Transaction();
 	
 	public List<Proprietaire> proprietaires;
 	public List<Cartecredit> cartecredits;
 	public List<Facture> factures;
+	public List<Facture> listbyclient;
+	public int idclient;
 	
-	
+	float mntpaye;
 	public int countProprietaire,ids; //<s:property value="countProprietaire"/>
-	public String ccid,facid;
+	public String ccid,facid,numcartclient;
 	//public boolean editmode;
     @Autowired
 	private IProprietaireMetier service;
@@ -36,8 +41,17 @@ public class AdminAction extends ActionSupport{
 	@Autowired
 	private IFactureMetier factureservice;
 	
+	@Autowired
+	private ITransactionMetier transactionservice;
+	
 	public String index() {
 		countProprietaire=service.listProprietaire().size();
+		return SUCCESS;
+	}
+	
+	
+	public String getSubForm() {
+		proprietaires=service.listProprietaire();
 		return SUCCESS;
 	}
 	
@@ -139,12 +153,12 @@ public class AdminAction extends ActionSupport{
 			}
 			
 			if(facid !=null) {
-				Facture f =new Facture(facture.getNumFacture(),facture.getMontant(),facture.getDateFacture());
+				Facture f =new Facture(facture.getNumFacture(),facture.getMontant(),facture.getDateFacture(),service.getProprietaire(proprietaire.getId()),facture.getEtat(),facture.getRestant());
 				factureservice.deleteFacture(facid);
 				factureservice.updateFacture(f);
 				
 			}else {
-			cartecredit.setProprietaire(service.getProprietaire(proprietaire.getId()));
+		    facture.setProprietaire(service.getProprietaire(proprietaire.getId()));
 			factureservice.addFacture(facture);
 			}
 			
@@ -161,7 +175,7 @@ public class AdminAction extends ActionSupport{
 		}
 		
 		public String show_facture() {
-
+			proprietaires=service.listProprietaire();
 			facture = factureservice.getFacture(facid);
 			factures=factureservice.listFactures();
 
@@ -177,6 +191,51 @@ public class AdminAction extends ActionSupport{
 		}
 		
 		//----------------------------------------------------------Transaction
+	
 		
+		public String login_view() {
+			return SUCCESS;
+		}
+		
+		
+		public String login_client() {
+			 listbyclient=factureservice.listFacturesbyProprietaire(idclient);
+			
+			return SUCCESS;
+		}
+		
+		
+		public String getSubForm2() {
+			cartecredits = ccservice.listCcbyProprietaire(idclient);
+			return SUCCESS;
+		}
+		
+		public String paye_facture_step1() {
+			cartecredits = ccservice.listCcbyProprietaire(idclient);
+			facture = factureservice.getFacture(facid);
+			return SUCCESS;
+		}
+		
+		
+		public String paye_facture_step2() {
+			   Date today = Calendar.getInstance().getTime();
+		       transaction.setCarte(ccservice.getCc(cartecredit.getNumCarte()));
+			   transaction.setFacture(factureservice.getFacture(facid));
+			   transaction.setDatePaiement(today);
+			   transaction.setMontantpaiement(transaction.getMontantpaiement());
+			   transactionservice.addTransaction(transaction);
+			   
+			  facture= factureservice.getFacture(facid);
+			 // float somme=facture.getMontant()-transaction.getMontantpaiement();
+			//  facture.setRestant();
+			  facture.setRestant(facture.getRestant()-transaction.getMontantpaiement());
+			 
+			  if(facture.getRestant()==0) {
+				  facture.setEtat("en cours");
+			  }
+			  factureservice.updateFacture(facture);
+		       listbyclient=factureservice.listFacturesbyProprietaire(idclient);
 
+			return SUCCESS;
+		}
 }

@@ -8,12 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mrabdelaziz.dao.ICcDAO;
 import com.mrabdelaziz.dao.IFactureDAO;
 import com.mrabdelaziz.dao.IProprietaireDAO;
+import com.mrabdelaziz.dao.ITransactionDAO;
 import com.mrabdelaziz.model.Cartecredit;
 import com.mrabdelaziz.model.Facture;
 import com.mrabdelaziz.model.Proprietaire;
+import com.mrabdelaziz.model.Transaction;
 @Transactional
 @Service
-public class GestionMetierImpl implements IProprietaireMetier , ICcMetier , IFactureMetier{
+public class GestionMetierImpl implements IProprietaireMetier , ICcMetier , IFactureMetier , ITransactionMetier{
 	private IProprietaireDAO dao;
 	
 	public void setDao(IProprietaireDAO dao) {
@@ -32,7 +34,7 @@ public class GestionMetierImpl implements IProprietaireMetier , ICcMetier , IFac
 
 	@Override
 	public Proprietaire getProprietaire(int id) {
-		// TODO Auto-generated method stub
+
 		return dao.getProprietaire(id);
 	}
 
@@ -65,31 +67,37 @@ public IProprietaireDAO getDao() {
 	@Override
 	public void addCc(Cartecredit cartecredit) {
 			ccdao.addCc(cartecredit);
-		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public List<Cartecredit> listCc() {
-		// TODO Auto-generated method stub
+
 		return ccdao.listCc();
 	}
 
 	@Override
 	public Cartecredit getCc(String id) {
-		// TODO Auto-generated method stub
+
 		return ccdao.getCc(id);
 	}
 
 	@Override
 	public void deleteCc(String id) {
-		// TODO Auto-generated method stub
+
 		ccdao.deleteCc(id);
 	}
 
 	@Override
 	public void updateCc(Cartecredit cartecredit) {
-		// TODO Auto-generated method stub
+
 		ccdao.updateCc(cartecredit);
+	}
+	
+	@Override
+	public List<Cartecredit> listCcbyProprietaire(int id) {
+		// TODO Auto-generated method stub
+		return ccdao.listCcbyProprietaire(id);
 	}
 //-------------------------- Facture
 	private IFactureDAO facturedao;
@@ -118,7 +126,7 @@ public IProprietaireDAO getDao() {
 
 	@Override
 	public Facture getFacture(String id) {
-		// TODO Auto-generated method stub
+
 		return facturedao.getFacture(id);
 	}
 
@@ -133,5 +141,56 @@ public IProprietaireDAO getDao() {
 		facturedao.updateFacture(facture);
 		
 	}
+	
+	@Override
+	public List<Facture> listFacturesbyProprietaire(int id) {
+		return facturedao.listFacturesbyProprietaire(id);
+	}
+	//-----------------------------------Transaction
+
+	private ITransactionDAO transactiondao;
+	
+	public ITransactionDAO getTransactiondao() {
+		return transactiondao;
+	}
+
+	public void setTransactiondao(ITransactionDAO transactiondao) {
+		this.transactiondao = transactiondao;
+	}
+	
+	@Override
+	public void addTransaction(Transaction transaction) {
+		transactiondao.addTransaction(transaction);	
+	}
+
+	@Override
+	public List<Transaction> listTransactions() {
+
+		return transactiondao.listTransactions();
+	}
+
+	@Override
+	public Transaction getTransaction(int id) {
+
+		return transactiondao.getTransaction(id);
+	}
+
+	@Override
+	public void deleteTransaction(int id) {
+
+		transactiondao.deleteTransaction(id);
+	}
+
+	@Override
+	public void updateTransaction(Transaction transaction) {
+		transactiondao.updateTransaction(transaction);
+		
+	}
+
+
+
+
+	
+	
 	
 }

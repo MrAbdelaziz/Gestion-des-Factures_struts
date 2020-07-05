@@ -10,4 +10,5 @@ public interface IFactureMetier {
 	public Facture getFacture(String id);
 	public void deleteFacture(String id);
 	public void updateFacture(Facture facture);
+	public List<Facture> listFacturesbyProprietaire(int id);
 }

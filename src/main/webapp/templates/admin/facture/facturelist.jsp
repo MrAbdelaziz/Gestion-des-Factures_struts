@@ -149,7 +149,10 @@
 										<tr>
 											<th scope="col">NumFacture</th>
 											<th scope="col">Date Facture</th>
+											<th scope="col">Proprietaire</th>
 											<th scope="col">Montant</th>
+											<th scope="col">Restant</th>
+											<th scope="col">etat</th>
 											<th scope="col" style="width: 18%; text-align: center">Action</th>
 										</tr>
 									</thead>
@@ -158,7 +161,10 @@
 											<tr>
 												<td><s:property value="numFacture" /></td>
 												<td><s:property value="dateFacture" /></td>
+												<td><s:property value="proprietaire.getNom()" /></td>
 												<td><s:property value="montant" /></td>
+												<td><s:property value="restant"/></td>
+												<td><s:property value="etat"/></td>
 												<td>
 												<s:url namespace="/" action="show_facture" var="lien1">
 														<s:param name="facid">

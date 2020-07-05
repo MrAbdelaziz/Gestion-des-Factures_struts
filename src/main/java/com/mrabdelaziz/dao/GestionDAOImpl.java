@@ -8,33 +8,36 @@ import javax.persistence.Query;
 import com.mrabdelaziz.model.Cartecredit;
 import com.mrabdelaziz.model.Facture;
 import com.mrabdelaziz.model.Proprietaire;
+import com.mrabdelaziz.model.Transaction;
 
-public class GestionDAOImpl implements IProprietaireDAO , ICcDAO ,IFactureDAO{
+import ch.qos.logback.core.pattern.Converter;
+
+public class GestionDAOImpl implements IProprietaireDAO , ICcDAO ,IFactureDAO , ITransactionDAO{
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
 	public void addProprietaire(Proprietaire proprietaire) {
-		// TODO Auto-generated method stub
+		
 		em.persist(proprietaire);
 	}
 
 	@Override
 	public List<Proprietaire> listProprietaire() {
-		// TODO Auto-generated method stub
+		
 		Query req=em.createQuery("select p from Proprietaire p");
 		return req.getResultList();
 	}
 
 	@Override
 	public Proprietaire getProprietaire(int id) {
-		// TODO Auto-generated method stub
+		
 		return em.find(Proprietaire.class, id);
 	}
 
 	@Override
 	public void deleteProprietaire(int id) {
-		// TODO Auto-generated method stub
+		
 		Proprietaire p=getProprietaire(id);
 		em.remove(p);
 		
@@ -56,36 +59,46 @@ public class GestionDAOImpl implements IProprietaireDAO , ICcDAO ,IFactureDAO{
 //--- cc
 	@Override
 	public void addCc(Cartecredit cartecredit) {
-		// TODO Auto-generated method stub
+		
 		em.persist(cartecredit);
 	}
 
 	@Override
 	public List<Cartecredit> listCc() {
-		// TODO Auto-generated method stub
+		
 		Query req=em.createQuery("select c from Cartecredit c");
 		return req.getResultList();
 	}
 
 	@Override
 	public Cartecredit getCc(String id) {
-		// TODO Auto-generated method stub
+		
 		return em.find(Cartecredit.class, id);
 	}
 
 	@Override
 	public void deleteCc(String id) {
-		// TODO Auto-generated method stub
+		
 		Cartecredit p=getCc(id);
 		em.remove(p);
 	}
 
 	@Override
 	public void updateCc(Cartecredit cartecredit) {
-		// TODO Auto-generated method stub
+		
 		em.merge(cartecredit);
 		em.close();
 	}
+	
+
+	@Override
+	public List<Cartecredit> listCcbyProprietaire(int id) {
+		
+		Query req=em.createQuery("select ab from Cartecredit ab where ab.proprietaire.id=:x");
+		req.setParameter("x",id);
+		return req.getResultList();
+	}
+	
 	//-----------------------------------FACTURE
 
 	@Override
@@ -118,6 +131,50 @@ public class GestionDAOImpl implements IProprietaireDAO , ICcDAO ,IFactureDAO{
 		em.close();
 		
 	}
+	
+	@Override
+	public List<Facture> listFacturesbyProprietaire(int id) {
+		Query req=em.createQuery("select ab from Facture ab where ab.proprietaire.id=:x");
+		req.setParameter("x",id);
+		return req.getResultList();
+	}
+
+
+	//-----------------------------------Transaction
+	
+	@Override
+	public void addTransaction(Transaction transaction) {
+			em.persist(transaction);
+	}
+
+	@Override
+	public List<Transaction> listTransactions() {
+		Query req=em.createQuery("select t from Transaction t");
+		return req.getResultList();
+	}
+
+	@Override
+	public Transaction getTransaction(int id) {
+		
+		return em.find(Transaction.class, id);
+	}
+
+	@Override
+	public void deleteTransaction(int id) {
+		em.remove(id);
+		
+	}
+
+	@Override
+	public void updateTransaction(Transaction transaction) {
+		em.merge(transaction);
+		em.close();
+		
+	}
+
+
+
+	
 	
 	
 	

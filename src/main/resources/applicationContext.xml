@@ -9,10 +9,12 @@
  <bean id="dao" class="com.mrabdelaziz.dao.GestionDAOImpl"></bean>
  <bean id="ccdao" class="com.mrabdelaziz.dao.GestionDAOImpl"></bean>
  <bean id="facturedao" class="com.mrabdelaziz.dao.GestionDAOImpl"></bean>
+ <bean id="transactiondao" class="com.mrabdelaziz.dao.GestionDAOImpl"></bean>
  <bean id="service" class="com.mrabdelaziz.metier.GestionMetierImpl">
    <property name="dao" ref="dao"></property>
    <property name="ccdao" ref="ccdao"></property>
    <property name="facturedao" ref="facturedao"></property>
+   <property name="transactiondao" ref="transactiondao"></property>
  </bean>
   
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
