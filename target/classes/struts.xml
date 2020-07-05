@@ -104,6 +104,33 @@
 				class="com.mrabdelaziz.web.admin.AdminAction" method="delete_cc">
 				<result name="success">templates/admin/cc/cclist.jsp</result>
 			</action>
+		<!-- Facture -->
+		    <action name="add_facture"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="add_facture">
+				<result name="success">templates/admin/facture/facture.jsp</result>
+			</action>
+			
+			<action name="save_facture"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="save_facture">
+				<result name="success">templates/admin/facture/facturelist.jsp</result>
+				<result name="input">  templates/admin/facture/facturelist.jsp</result>
+			</action>
+			
+			<action name="factureslist"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="facture_list">
+				<result name="success">templates/admin/facture/facturelist.jsp</result>
+			</action>
+			
+			<action name="show_facture"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="show_facture">
+				<result name="success">templates/admin/facture/facture.jsp</result>
+			</action>
+			
+			
+			<action name="delete_facture"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="delete_facture">
+				<result name="success">templates/admin/facture/facturelist.jsp</result>
+			</action>
 		
 	</package>
 </struts>

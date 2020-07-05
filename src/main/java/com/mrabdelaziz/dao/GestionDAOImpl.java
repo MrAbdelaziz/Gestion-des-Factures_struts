@@ -6,9 +6,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.mrabdelaziz.model.Cartecredit;
+import com.mrabdelaziz.model.Facture;
 import com.mrabdelaziz.model.Proprietaire;
 
-public class ProprietaireDAOImpl implements IProprietaireDAO , ICcDAO{
+public class GestionDAOImpl implements IProprietaireDAO , ICcDAO ,IFactureDAO{
 	@PersistenceContext
 	private EntityManager em;
 
@@ -85,7 +86,40 @@ public class ProprietaireDAOImpl implements IProprietaireDAO , ICcDAO{
 		em.merge(cartecredit);
 		em.close();
 	}
+	//-----------------------------------FACTURE
 
+	@Override
+	public void addFacture(Facture facture) {
+		em.persist(facture);
+		
+	}
+
+	@Override
+	public List<Facture> listFactures() {
+		Query req=em.createQuery("select f from Facture f");
+		return req.getResultList();
+	}
+
+	@Override
+	public Facture getFacture(String id) {
+		return em.find(Facture.class, id);
+	}
+
+	@Override
+	public void deleteFacture(String id) {
+		Facture p=getFacture(id);
+		em.remove(p);
+		
+	}
+
+	@Override
+	public void updateFacture(Facture facture) {
+		em.merge(facture);
+		em.close();
+		
+	}
+	
+	
 	
 
 }

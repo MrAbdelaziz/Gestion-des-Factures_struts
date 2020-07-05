@@ -132,88 +132,67 @@
 			<div class="col-lg-9 p-0" style="width: 100%">
 				<div class="container">
 					<div class="admin_content">
-<a href="${pageContext.request.contextPath}/factureslist"
-										class="btn btn-outline-info">Back </a>
-						<s:form action="save_facture" method="post" class="mb-5">
-
-							<div class="card" style="width: 100%">
-								<div class="card-body">
-						
 
 
-
-
-								</div>
-								<div class="card mt-2" style="width: 100%; border: 0px">
-									<label for="inputNom" class="col-sm-2 col-form-label"
-										style="font-weight: bold">num Facture :</label>
-<%
-String facn ;
-if(request.getAttribute("facid")==null){
-	facn="F000000";
-}else{
-	facn = (String) request.getAttribute("facid");
-}
-%>
-									<div class="form-group row">
-										<div class="col-sm-10">
-											<input type="text" value="<%=facn%>" name="facture.numFacture"
-												class="form-control" placeholder="Update num Facture"
-												id="save_facture_facture_numFacture" />
-										</div>
-									</div>
-
-
-									<label for="inputNom" class="col-sm-2 col-form-label"
-										style="font-weight: bold">Montant :</label>
-
-									<div class="form-group row">
-										<div class="col-sm-10">
-<%
-int mont=0;
-try{
-mont =Integer.parseInt(request.getParameter("mont"));
-}catch(Exception e){
-	mont=0;
-}
-%>
-											<input   value="<%=mont%>" type="text" name="facture.montant"
-												class="form-control" placeholder="Update Montant"
-												id="save_facture_facture_montant" />
-										</div>
-									</div>
-									
-									<label for="inputNom" class="col-sm-2 col-form-label"
-										style="font-weight: bold">Date Facture :</label>
-
-									<div class="form-group row">
-										<div class="col-sm-10">
-										<input type="date" name="facture.dateFacture"
-												class="form-control"
-												id="save_facture_facture_dateFacture">
-										</div>
-									</div>
-									
-									<button type="submit" class="btn btn-warning">Confirm</button>
-									
-									
-									<s:if test="%{facid != null}">
-									<s:url namespace="/" action="delete_facture" var="lien2">
-										<s:param name="facid">
-											<s:property value="facid" />
-										</s:param>
-									</s:url>
-									<s:a href="%{lien2}" cssClass="btn btn-danger">Delete</s:a>
-						
-									</s:if>
-											</div>
-
+						<div
+							class="d-flex justify-content-between align-items-center text-white">
+							<div class="page-header" style="width: 100%">
+								<h1 id="navbars">Factures</h1>
 							</div>
-							<s:if test="%{facid != null}">
-								<s:hidden><s:hidden name="facid"></s:hidden></s:hidden>
-							</s:if>
-						</s:form>
-						
+						</div>
+
+
+						<div class="card" style="clear: both">
+							<div class="card-body p-0">
+								<table class="table table-bordered" style="margin-bottom: 0px;">
+									<thead style="background-color: #797574 !important;">
+										<tr>
+											<th scope="col">NumFacture</th>
+											<th scope="col">Date Facture</th>
+											<th scope="col">Montant</th>
+											<th scope="col" style="width: 18%; text-align: center">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<s:iterator value="factures">
+											<tr>
+												<td><s:property value="numFacture" /></td>
+												<td><s:property value="dateFacture" /></td>
+												<td><s:property value="montant" /></td>
+												<td>
+												<s:url namespace="/" action="show_facture" var="lien1">
+														<s:param name="facid">
+															<s:property value="numFacture" />
+														</s:param>
+														
+														<s:param name="mont">
+															<s:property value="montant" />
+														</s:param>
+												</s:url>
+												
+												
+
+													<div class="btn-group-sm mr-2 text-center" role="group"
+														aria-label="Second group">
+														
+														<s:a href="%{lien1}" type="button" class="btn btn-outline-info">Info
+														<i class="fa fa-eye">
+															</i></s:a>
+													</div>
+													
+												</td>
+											</tr>
+										</s:iterator>
+									</tbody>
+								</table>
+							</div>
+							<a type="button" class="btn btn-primary"
+								style="background-color: #797574; border-color: #fff;"
+								href="${pageContext.request.contextPath}/add_facture">Ajouter</a>
+						</div>
+
+
+
 					</div>
 
 				</div>

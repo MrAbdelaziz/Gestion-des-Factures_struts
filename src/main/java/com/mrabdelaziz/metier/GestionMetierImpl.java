@@ -6,12 +6,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mrabdelaziz.dao.ICcDAO;
+import com.mrabdelaziz.dao.IFactureDAO;
 import com.mrabdelaziz.dao.IProprietaireDAO;
 import com.mrabdelaziz.model.Cartecredit;
+import com.mrabdelaziz.model.Facture;
 import com.mrabdelaziz.model.Proprietaire;
 @Transactional
 @Service
-public class ProprietaireMetierImpl implements IProprietaireMetier , ICcMetier {
+public class GestionMetierImpl implements IProprietaireMetier , ICcMetier , IFactureMetier{
 	private IProprietaireDAO dao;
 	
 	public void setDao(IProprietaireDAO dao) {
@@ -62,8 +64,6 @@ public IProprietaireDAO getDao() {
 
 	@Override
 	public void addCc(Cartecredit cartecredit) {
-		System.out.println("cartecredit id:"+cartecredit.getNumCarte());
-		System.out.println("cartecredit pr:"+cartecredit.getProprietaire().getId());
 			ccdao.addCc(cartecredit);
 		// TODO Auto-generated method stub
 	}
@@ -90,6 +90,48 @@ public IProprietaireDAO getDao() {
 	public void updateCc(Cartecredit cartecredit) {
 		// TODO Auto-generated method stub
 		ccdao.updateCc(cartecredit);
+	}
+//-------------------------- Facture
+	private IFactureDAO facturedao;
+	
+	
+	
+	public IFactureDAO getFacturedao() {
+		return facturedao;
+	}
+
+	public void setFacturedao(IFactureDAO facturedao) {
+		this.facturedao = facturedao;
+	}
+
+	@Override
+	public void addFacture(Facture facture) {
+		facturedao.addFacture(facture);
+		
+	}
+
+	@Override
+	public List<Facture> listFactures() {
+		
+		return facturedao.listFactures();
+	}
+
+	@Override
+	public Facture getFacture(String id) {
+		// TODO Auto-generated method stub
+		return facturedao.getFacture(id);
+	}
+
+	@Override
+	public void deleteFacture(String id) {
+		facturedao.deleteFacture(id);
+		
+	}
+
+	@Override
+	public void updateFacture(Facture facture) {
+		facturedao.updateFacture(facture);
+		
 	}
 	
 }
