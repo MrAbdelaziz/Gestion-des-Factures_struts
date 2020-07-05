@@ -11,9 +11,11 @@
 <body>
 	<div>
 	<s:form action="save" method="post">
-		<s:textfield label="ID" name="proprietaire.id"></s:textfield>
+		<s:hidden label="ID" name="proprietaire.id"></s:hidden>
 		<s:textfield key="nom.label" name="proprietaire.nom"></s:textfield>
 		<s:textfield key="prenom.label" name="proprietaire.prenom"></s:textfield>
+	    <s:hidden name="editmode"></s:hidden>
+		
 		<s:submit value="Save"></s:submit>
 	</s:form>
 	</div>

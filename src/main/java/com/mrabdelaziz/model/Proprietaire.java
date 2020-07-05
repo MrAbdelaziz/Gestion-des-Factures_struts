@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -13,6 +15,7 @@ public class Proprietaire implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String nom,prenom;
@@ -25,7 +28,6 @@ public class Proprietaire implements Serializable {
 	}
 
 
-
 	public Proprietaire(int id, String nom, String prenom, List<Cartecredit> cartecredits) {
 		super();
 		this.id = id;
@@ -33,6 +35,10 @@ public class Proprietaire implements Serializable {
 		this.prenom = prenom;
 		this.cartecredits = cartecredits;
 	}
+
+
+
+
 
 
 
@@ -89,6 +95,12 @@ public class Proprietaire implements Serializable {
 		cartecredit.setProprietaire(null);
 
 		return cartecredit;
+	}
+
+
+	@Override
+	public String toString() {
+		return "[nom=" + nom + ", prenom=" + prenom + "]";
 	}
 
 	

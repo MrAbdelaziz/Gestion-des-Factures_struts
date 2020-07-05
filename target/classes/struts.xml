@@ -35,5 +35,75 @@
 			<result name="success">templates/proprietaire/index.jsp</result>
 			<result name="error">err</result>
 		</action>
+		
+		<!-- admin -->
+		
+		<action name="admin"
+			class="com.mrabdelaziz.web.admin.AdminAction" method="index">
+			<result name="success">templates/admin/index.jsp</result>
+		</action>
+		
+		<!-- admin -->
+		
+		<action name="admin"
+			class="com.mrabdelaziz.web.admin.AdminAction" method="index">
+			<result name="success">templates/admin/index.jsp</result>
+		</action>
+		
+		<!-- proprietaire -->
+			<action name="proprietairelist"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="ProprietaireList">
+				<result name="success">templates/admin/proprietaire/proprietairelist.jsp</result>
+			</action>
+			
+			
+			<action name="show_proprietaire"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="show_proprietaire">
+				<result name="success">templates/admin/proprietaire/proprietaire.jsp</result>
+			</action>
+			
+			<action name="edit_proprietaire"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="edit_proprietaire">
+				<result name="success">templates/admin/proprietaire/proprietairelist.jsp</result>
+			</action>
+			
+			<action name="delete_proprietaire"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="delete_proprietaire">
+				<result name="success">templates/admin/proprietaire/proprietairelist.jsp</result>
+			</action>
+			
+			
+			<action name="add_proprietaire"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="add_proprietaire">
+				<result name="success">templates/admin/proprietaire/proprietaire.jsp</result>
+			</action>
+		<!-- CC -->
+		  <action name="cclist"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="cc_list">
+				<result name="success">templates/admin/cc/cclist.jsp</result>
+			</action>
+			
+			 <action name="add_cc"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="add_cc">
+				<result name="success">templates/admin/cc/cc.jsp</result>
+			</action>
+			
+			 <action name="savecc"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="save_cc">
+				<result name="success">templates/admin/cc/cclist.jsp</result>
+				<result name="input">templates/admin/cc/cclist.jsp</result>
+			</action>
+			
+			<action name="show_cc"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="show_cc">
+				<result name="success">templates/admin/cc/cc.jsp</result>
+			</action>
+		
+		
+			<action name="delete_cc"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="delete_cc">
+				<result name="success">templates/admin/cc/cclist.jsp</result>
+			</action>
+		
 	</package>
 </struts>

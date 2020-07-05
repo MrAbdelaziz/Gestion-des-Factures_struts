@@ -20,6 +20,16 @@ public class Cartecredit implements Serializable {
 	public Cartecredit() {
 	}
 
+	
+	
+	public Cartecredit(String numCarte, Proprietaire proprietaire) {
+		super();
+		this.numCarte = numCarte;
+		this.proprietaire = proprietaire;
+	}
+
+
+
 	public String getNumCarte() {
 		return this.numCarte;
 	}

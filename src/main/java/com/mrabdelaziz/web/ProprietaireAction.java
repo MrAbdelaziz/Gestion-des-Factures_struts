@@ -6,9 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mrabdelaziz.metier.IProprietaireMetier;
 import com.mrabdelaziz.model.Proprietaire;
-import com.mrabdelaziz.service.ProprietaireService;
-import com.mrabdelaziz.service.SingletonService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ProprietaireAction extends ActionSupport{
@@ -16,9 +15,9 @@ public class ProprietaireAction extends ActionSupport{
 	public Proprietaire proprietaire = new Proprietaire();
 	public List<Proprietaire> proprietaires;
 	public int ids;
+	public boolean editmode;
 	@Autowired
-	private ProprietaireService service;
-	Logger log = LogManager.getLogger(this.getClass());
+	private IProprietaireMetier service;
 	
 
 	public String index() {
@@ -27,7 +26,14 @@ public class ProprietaireAction extends ActionSupport{
 	}
 	
 	public String save() {
+		if(editmode==false) {
 		service.addProprietaire(proprietaire);
+		}else {
+			//proprietaire.setNom("editmode");
+			service.updateProprietaire(proprietaire);
+			editmode=false;
+		}
+		proprietaire = new Proprietaire();
 		proprietaires=service.listProprietaire();
 		return SUCCESS;
 	}
@@ -40,6 +46,7 @@ public class ProprietaireAction extends ActionSupport{
 	
 	
 	public String edit() {
+		editmode=true;
 		proprietaire = service.getProprietaire(ids);
 		//service.updateProprietaire(proprietaire);
 		proprietaires= service.listProprietaire();
@@ -47,12 +54,6 @@ public class ProprietaireAction extends ActionSupport{
 	}
 	
 	
-	
-	public String execute() {
-		//proprietaire = service.getProprietaire(ids);
-		//service.updateProprietaire(proprietaire);
-		//proprietaires= service.listProprietaire();
-		return SUCCESS;
-	}
+
 
 }
