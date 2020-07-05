@@ -158,6 +158,12 @@
 				class="com.mrabdelaziz.web.admin.AdminAction" method="paye_facture_step2">
 				<result name="success">templates/client/facturelist.jsp</result>
 			</action>
+			
+			
+			 <action name="transactionslist"
+				class="com.mrabdelaziz.web.admin.AdminAction" method="transactions_list">
+				<result name="success">templates/admin/transaction/transactionslist.jsp</result>
+			</action>
 
 	</package>
 </struts>

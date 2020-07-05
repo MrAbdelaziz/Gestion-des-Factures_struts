@@ -21,9 +21,11 @@ public class Transaction {
 	private int id;
 	
 	@ManyToOne
+	@JoinColumn(name="numFacture")
 	private Facture facture;
 	
 	@ManyToOne
+	@JoinColumn(name="numCarte")
 	private Cartecredit carte;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

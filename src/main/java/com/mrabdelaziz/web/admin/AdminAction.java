@@ -26,6 +26,7 @@ public class AdminAction extends ActionSupport{
 	public List<Cartecredit> cartecredits;
 	public List<Facture> factures;
 	public List<Facture> listbyclient;
+	public List<Transaction> transactions;
 	public int idclient;
 	
 	float mntpaye;
@@ -156,12 +157,19 @@ public class AdminAction extends ActionSupport{
 			}
 			
 			if(facid !=null) {
-				Facture f =new Facture(facture.getNumFacture(),facture.getMontant(),facture.getDateFacture(),service.getProprietaire(proprietaire.getId()),facture.getEtat(),facture.getRestant());
-				factureservice.deleteFacture(facid);
+				Facture f;
+				if(factureservice.getFacture(facture.getNumFacture()).getEtat().equals("en cours")|| factureservice.getFacture(facture.getNumFacture()).getEtat().equals("paye")) {
+					f =new Facture(facture.getNumFacture(),facture.getMontant(),facture.getDateFacture(),service.getProprietaire(proprietaire.getId()),facture.getEtat(),2-2);
+
+				}else {
+					f =new Facture(facture.getNumFacture(),facture.getMontant(),facture.getDateFacture(),service.getProprietaire(proprietaire.getId()),facture.getEtat(),factureservice.getFacture(facture.getNumFacture()).getMontant());
+				}
+				//factureservice.deleteFacture(facid);
 				factureservice.updateFacture(f);
 				
 			}else {
 		    facture.setProprietaire(service.getProprietaire(proprietaire.getId()));
+		    facture.setRestant(facture.getMontant());
 			factureservice.addFacture(facture);
 			}
 			
@@ -241,4 +249,12 @@ public class AdminAction extends ActionSupport{
 
 			return SUCCESS;
 		}
+		
+		
+		
+		public String transactions_list() {
+			transactions=transactionservice.listTransactions();
+			return SUCCESS;
+		}
+		
 }

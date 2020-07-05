@@ -26,7 +26,7 @@
 					<div class="collapse navbar-collapse" id="navbarColor01">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active"><a
-								class="nav-link text-black-50">Gestion de pub</a></li>
+								class="nav-link text-black-50">Facturation @MrAbdelaziz</a></li>
 						</ul>
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 						</a>
 						<!-- Submenu content -->
 						<div id='submenu1' class="collapse sidebar-submenu">
-							<a href="/admin"
+							<a href="#"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Statistiques</span>
 							</a>
@@ -103,13 +103,13 @@
 							</a>
 
 							
-							<a th:href="@{/admin/categories}"
+							<a href="${pageContext.request.contextPath}/factureslist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Factures</span>
 							</a>
 							
 							 
-							 <a th:href="@{/admin/organismes}"
+							 <a href="${pageContext.request.contextPath}/transactionslist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Transactions</span>
 							 </a>

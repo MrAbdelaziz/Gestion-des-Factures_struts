@@ -26,7 +26,7 @@
 					<div class="collapse navbar-collapse" id="navbarColor01">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active"><a
-								class="nav-link text-black-50">Gestion de pub</a></li>
+								class="nav-link text-black-50">Facturation @MrAbdelaziz</a></li>
 						</ul>
 					</div>
 				</div>
@@ -99,7 +99,7 @@
 															<div class="btn-group-sm mr-2 text-center" role="group"
 																aria-label="Second group">
 																
-																<s:a href="%{lien1}" type="button" class="btn btn-outline-info">Payé
+																<s:a href="%{lien1}" type="button" class="btn btn-outline-info">Payer
 																<i class="fa fa-credit-card">
 																	</i></s:a>
 															</div>

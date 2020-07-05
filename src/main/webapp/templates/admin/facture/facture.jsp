@@ -33,7 +33,7 @@ $.get("getSubForm",function(data){
 					<div class="collapse navbar-collapse" id="navbarColor01">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active"><a
-								class="nav-link text-black-50">Gestion de pub</a></li>
+								class="nav-link text-black-50">Facturation @MrAbdelaziz</a></li>
 						</ul>
 					</div>
 				</div>
@@ -68,7 +68,7 @@ $.get("getSubForm",function(data){
 						</a>
 						<!-- Submenu content -->
 						<div id='submenu1' class="collapse sidebar-submenu">
-							<a th:href="@{/admin}"
+							<a href="${pageContext.request.contextPath}/admin"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Statistiques</span>
 							</a>
@@ -84,7 +84,7 @@ $.get("getSubForm",function(data){
 						</a>
 						<!-- Submenu content -->
 						<div id='submenu2' class="collapse sidebar-submenu">
-							<a class="list-group-item list-group-item-action  text-black-50">
+							<a href="${pageContext.request.contextPath}/proprietairelist" class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Proprietaires</span>
 							</a>
 						</div>
@@ -102,16 +102,13 @@ $.get("getSubForm",function(data){
 						<!-- Submenu content -->
 						<div id='submenu3' class="collapse sidebar-submenu">
 
-							<a th:href="@{/admin/deciplines}"
-								class="list-group-item list-group-item-action  text-black-50">
-								<span class="menu-collapsed">Proprietaires</span>
-							</a> <a th:href="@{/admin/publications}"
+							<a href="${pageContext.request.contextPath}/cclist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">CC</span>
-							</a> <a th:href="@{/admin/categories}"
+							</a> <a href="${pageContext.request.contextPath}/factureslist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Factures</span>
-							</a> <a th:href="@{/admin/organismes}"
+							</a> <a href="${pageContext.request.contextPath}/transactionslist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Transactions</span>
 							</a>
@@ -162,7 +159,7 @@ if(request.getAttribute("facid")==null){
 										<div class="col-sm-10">
 											<input type="text" value="<%=facn%>" name="facture.numFacture"
 												class="form-control" placeholder="Update num Facture"
-												id="save_facture_facture_numFacture" />
+												id="save_facture_facture_numFacture"   required="required"/>
 										</div>
 									</div>
 
@@ -180,21 +177,13 @@ mont =Integer.parseInt(request.getParameter("mont"));
 	mont=0;
 }
 %>
-											<input   value="<%=mont%>" type="text" name="facture.montant"
+											<input   value="<%=mont%>" type="number" name="facture.montant"
 												class="form-control" placeholder="Update Montant"
-												id="save_facture_facture_montant" />
+												id="save_facture_facture_montant" min="1" required="required" />
 										</div>
 									</div>
 									
-									<label for="inputNom" class="col-sm-2 col-form-label"
-										style="font-weight: bold">Restant :</label>
-									<div class="form-group row">
-										<div class="col-sm-10">
-										<input type="text" name="facture.restant"
-												class="form-control"
-												value="0">
-										</div>
-									</div>
+									
 									<label for="inputNom" class="col-sm-2 col-form-label"
 										style="font-weight: bold">Date Facture :</label>
 
@@ -230,7 +219,7 @@ mont =Integer.parseInt(request.getParameter("mont"));
 									<button type="submit" class="btn btn-warning">Confirm</button>
 									
 									
-									<s:if test="%{facid != null}">
+								<s:if test="%{facid != null && facture.montant==facture.restant}">
 									<s:url namespace="/" action="delete_facture" var="lien2">
 										<s:param name="facid">
 											<s:property value="facid" />
@@ -238,7 +227,7 @@ mont =Integer.parseInt(request.getParameter("mont"));
 									</s:url>
 									<s:a href="%{lien2}" cssClass="btn btn-danger">Delete</s:a>
 						
-									</s:if>
+								</s:if>
 											</div>
 
 							</div>

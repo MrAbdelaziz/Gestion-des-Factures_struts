@@ -21,7 +21,7 @@
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link text-black-50">Gestion de pub</a>
+                            <a class="nav-link text-black-50">Facturation @MrAbdelaziz</a>
                         </li>
                     </ul>
                 </div>

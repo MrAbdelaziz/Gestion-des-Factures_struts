@@ -2,6 +2,7 @@ package com.mrabdelaziz.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -11,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Facture {
 	@Id
+	@Column(name = "numFacture")
 	private String numFacture;
 	private float montant;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

@@ -26,7 +26,7 @@
 					<div class="collapse navbar-collapse" id="navbarColor01">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active"><a
-								class="nav-link text-black-50">Gestion de pub</a></li>
+								class="nav-link text-black-50">Facturation @MrAbdelaziz</a></li>
 						</ul>
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 						</a>
 						<!-- Submenu content -->
 						<div id='submenu1' class="collapse sidebar-submenu">
-							<a th:href="@{/admin}"
+							<a href="${pageContext.request.contextPath}/admin"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Statistiques</span>
 							</a>
@@ -77,7 +77,7 @@
 						</a>
 						<!-- Submenu content -->
 						<div id='submenu2' class="collapse sidebar-submenu">
-							<a class="list-group-item list-group-item-action  text-black-50">
+							<a href="${pageContext.request.contextPath}/proprietairelist" class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Proprietaires</span>
 							</a>
 						</div>
@@ -95,16 +95,13 @@
 						<!-- Submenu content -->
 						<div id='submenu3' class="collapse sidebar-submenu">
 
-							<a th:href="@{/admin/deciplines}"
-								class="list-group-item list-group-item-action  text-black-50">
-								<span class="menu-collapsed">Proprietaires</span>
-							</a> <a th:href="@{/admin/publications}"
+							<a href="${pageContext.request.contextPath}/cclist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">CC</span>
-							</a> <a th:href="@{/admin/categories}"
+							</a> <a href="${pageContext.request.contextPath}/factureslist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Factures</span>
-							</a> <a th:href="@{/admin/organismes}"
+							</a> <a href="${pageContext.request.contextPath}/transactionslist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Transactions</span>
 							</a>
@@ -147,6 +144,7 @@
 								<table class="table table-bordered" style="margin-bottom: 0px;">
 									<thead style="background-color: #797574 !important;">
 										<tr>
+											<th scope="col">Id</th>
 											<th scope="col">Nom</th>
 											<th scope="col">Prenom</th>
 											<th scope="col" style="width: 18%; text-align: center">Action</th>
@@ -155,6 +153,7 @@
 									<tbody>
 										<s:iterator value="proprietaires">
 											<tr>
+											<td><s:property value="id" /></td>
 												<td><s:property value="nom" /></td>
 												<td><s:property value="prenom" /></td>
 

@@ -26,7 +26,7 @@
 					<div class="collapse navbar-collapse" id="navbarColor01">
 						<ul class="navbar-nav mr-auto">
 							<li class="nav-item active"><a
-								class="nav-link text-black-50">Gestion de pub</a></li>
+								class="nav-link text-black-50">Facturation @MrAbdelaziz</a></li>
 						</ul>
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 						</a>
 						<!-- Submenu content -->
 						<div id='submenu1' class="collapse sidebar-submenu">
-							<a th:href="@{/admin}"
+							<a href="${pageContext.request.contextPath}/admin"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Statistiques</span>
 							</a>
@@ -77,7 +77,7 @@
 						</a>
 						<!-- Submenu content -->
 						<div id='submenu2' class="collapse sidebar-submenu">
-							<a class="list-group-item list-group-item-action  text-black-50">
+							<a href="${pageContext.request.contextPath}/proprietairelist" class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Proprietaires</span>
 							</a>
 						</div>
@@ -95,16 +95,13 @@
 						<!-- Submenu content -->
 						<div id='submenu3' class="collapse sidebar-submenu">
 
-							<a th:href="@{/admin/deciplines}"
-								class="list-group-item list-group-item-action  text-black-50">
-								<span class="menu-collapsed">Proprietaires</span>
-							</a> <a th:href="@{/admin/publications}"
+							 <a href="${pageContext.request.contextPath}/cclist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">CC</span>
-							</a> <a th:href="@{/admin/categories}"
+							</a> <a href="${pageContext.request.contextPath}/factureslist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Factures</span>
-							</a> <a th:href="@{/admin/organismes}"
+							</a> <a href="${pageContext.request.contextPath}/transactionslist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">Transactions</span>
 							</a>

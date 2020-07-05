@@ -95,7 +95,7 @@
 						<!-- Submenu content -->
 						<div id='submenu3' class="collapse sidebar-submenu">
 
-						 <a href="${pageContext.request.contextPath}/cclist"
+							 <a href="${pageContext.request.contextPath}/cclist"
 								class="list-group-item list-group-item-action  text-black-50">
 								<span class="menu-collapsed">CC</span>
 							</a> <a href="${pageContext.request.contextPath}/factureslist"
@@ -129,75 +129,47 @@
 			<div class="col-lg-9 p-0" style="width: 100%">
 				<div class="container">
 					<div class="admin_content">
-<a href="${pageContext.request.contextPath}/proprietairelist"
-										class="btn btn-outline-info">Back </a>
-						<s:form action="edit_proprietaire" method="post" class="mb-5">
-
-							<div class="card" style="width: 100%">
-								<div class="card-body">
-									<div class="media">
-										<img src="https://www.nourbook.com/publice/images/user.png"
-											class="mr-4">
-										<div class="media-body">
-											<div class="d-flex w-100 justify-content-between">
-												<h5 class="mt-0">
-												<label>Nom: </label>
-												<s:property  value="proprietaire.nom" />
-													</br><label>Preom: </label>
-												<s:property value="proprietaire.prenom" />
 
 
-												</h5>
-											</div>
-										</div>
-
-									</div>
-
-
-
-
-								</div>
-								<div class="card mt-2" style="width: 100%; border: 0px">
-									<label for="inputNom" class="col-sm-2 col-form-label"
-										style="font-weight: bold">Nom :</label>
-
-									<div class="form-group row">
-										<div class="col-sm-10">
-											<input type="text" name="proprietaire.nom"
-												class="form-control" placeholder="Update Nom"
-												id="edit_proprietaire_proprietaire_nom" />
-										</div>
-									</div>
-
-
-									<label for="inputNom" class="col-sm-2 col-form-label"
-										style="font-weight: bold">Prenom :</label>
-
-									<div class="form-group row">
-										<div class="col-sm-10">
-											<input type="text" name="proprietaire.prenom"
-												class="form-control" placeholder="Update Prenom"
-												id="edit_proprietaire_proprietaire_prenom" />
-										</div>
-									</div>
-									<button type="submit" class="btn btn-warning">Confirm</button>
-									
-									
-									<s:if test="%{ids != 0}">
-									<s:url namespace="/" action="delete_proprietaire" var="lien2">
-										<s:param name="ids">
-											<s:property value="ids" />
-										</s:param>
-									</s:url>
-									<s:a href="%{lien2}" cssClass="btn btn-danger">Delete</s:a>
-						
-									</s:if>
-											</div>
-
+						<div
+							class="d-flex justify-content-between align-items-center text-white">
+							<div class="page-header" style="width: 100%">
+								<h1 id="navbars">Transactions</h1>
 							</div>
-							<s:hidden label="ID" name="proprietaire.id"></s:hidden>
-						</s:form>
-						
+						</div>
+
+
+						<div class="card" style="clear: both">
+							<div class="card-body p-0">
+								<table class="table table-bordered" style="margin-bottom: 0px;">
+									<thead style="background-color: #797574 !important;">
+										<tr>
+											<th scope="col">Transaction id</th>
+											<th scope="col">Date Paiement</th>
+											<th scope="col">Montant</th>
+											<th scope="col">Facture</th>
+											<th scope="col">Prop</th>
+										</tr>
+									</thead>
+									<tbody>
+										<s:iterator value="transactions">
+											<tr>
+												<td><s:property value="id" /></td>
+												<td><s:property value="datePaiement" /></td>
+												<td><s:property value="montantpaiement" /></td>
+												<td><s:property value="facture.getNumFacture()" /></td>
+												<td><s:property value="carte.getProprietaire().getNom()" /></td>
+												
+											</tr>
+										</s:iterator>
+									</tbody>
+								</table>
+							</div>
+			
+						</div>
+
+
+
 					</div>
 
 				</div>

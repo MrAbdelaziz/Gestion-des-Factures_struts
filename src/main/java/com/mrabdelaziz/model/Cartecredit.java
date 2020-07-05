@@ -2,6 +2,7 @@ package com.mrabdelaziz.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,6 +11,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Cartecredit implements Serializable {
 	@Id
+	@Column(name = "numCarte")
 	private String numCarte;
 
 	//bi-directional many-to-one association to Proprietaire
