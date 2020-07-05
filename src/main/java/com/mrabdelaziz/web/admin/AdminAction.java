@@ -29,7 +29,8 @@ public class AdminAction extends ActionSupport{
 	public int idclient;
 	
 	float mntpaye;
-	public int countProprietaire,ids; //<s:property value="countProprietaire"/>
+	
+	public int countProprietaire,ids,countfactures,counttransaction; //<s:property value="countProprietaire"/>
 	public String ccid,facid,numcartclient;
 	//public boolean editmode;
     @Autowired
@@ -46,6 +47,8 @@ public class AdminAction extends ActionSupport{
 	
 	public String index() {
 		countProprietaire=service.listProprietaire().size();
+		countfactures=factureservice.listFactures().size();
+		counttransaction=transactionservice.listTransactions().size();
 		return SUCCESS;
 	}
 	

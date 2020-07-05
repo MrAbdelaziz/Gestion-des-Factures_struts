@@ -151,8 +151,10 @@
 						class="btn btn-lg btn-block">Factures</a>
 				</div>
 				<div class="card-body">
-					<h1 class="card-title pricing-card-title" th:text="${publications}"></h1>
-				</div>
+<h1 class="card-title pricing-card-title" >
+					
+					<s:property value="countfactures"/>
+					</h1>				</div>
 			</div>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
@@ -174,8 +176,10 @@
 
 				</div>
 				<div class="card-body">
-					<h1 class="card-title pricing-card-title" th:text="${categories}"></h1>
-				</div>
+<h1 class="card-title pricing-card-title" >
+					
+					<s:property value="counttransaction"/>
+					</h1>				</div>
 			</div>
 		</div>
 	</div>
