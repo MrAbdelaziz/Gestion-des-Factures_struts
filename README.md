@@ -5,6 +5,7 @@ Application Gestion des Factures
 ## Implement
 - Struts
 - Bootstrap
+- Mysql
 
 Statistiques
 :-------------------------:|
