@@ -147,7 +147,7 @@
 		<div class="card-deck mb-3 text-center mt-3">
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<a type="button"
+					<a type="button" href="${pageContext.request.contextPath}/factureslist"
 						class="btn btn-lg btn-block">Factures</a>
 				</div>
 				<div class="card-body">
@@ -171,7 +171,7 @@
 			</div>
 			<div class="card mb-4 shadow-sm">
 				<div class="card-header">
-					<a type="button"
+					<a type="button" href="${pageContext.request.contextPath}/transactionslist"
 						class="btn btn-lg btn-block">Transactions</a>
 
 				</div>
