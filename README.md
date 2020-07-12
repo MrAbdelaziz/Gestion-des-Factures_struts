@@ -1,5 +1,6 @@
 # gestion_de_facturation_struts
-Développement d'une application de facturation en utilisant Struts
+
+Application Gestion des Factures
 
 ## Implement
 - Struts
