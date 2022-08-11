@@ -18,6 +18,3 @@ Client
 Admin
 :-------------------------:|
 <img align="center" height="350" width="845"  src="https://github.com/MrAbdelaziz/gestion_de_facturation_struts/blob/master/ScreenShots/Sidebar.png"> |
-
-## social media :
-- iG: https://www.instagram.com/_.abdelaziz._/
