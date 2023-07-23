@@ -17,7 +17,7 @@
 		<struts2.version>2.5.14.1</struts2.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <hibernate.version>4.2.1.Final</hibernate.version>
-		<spring-framework.version>3.2.3.RELEASE</spring-framework.version>
+		<spring-framework.version>5.2.20.RELEASE</spring-framework.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	
 		<thymeleaf.version>2.1.6.RELEASE</thymeleaf.version>
